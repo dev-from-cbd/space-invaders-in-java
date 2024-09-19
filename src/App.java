@@ -11,7 +11,7 @@ public class App {
 
         JFrame frame = new JFrame("Space Invaders in Java");
         frame.setVisible(true);
-        frame.setSize(boardWidth);
+        frame.setSize(boardWidth, boatdHeight);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
