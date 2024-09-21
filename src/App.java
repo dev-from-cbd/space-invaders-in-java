@@ -7,13 +7,18 @@ public class App {
         int rows = 16;
         int columns = 16;
         int boardWidth = tileSize * columns; //32*16 = 512px
-        int boatdHeight = tileSize * rows; //32*16 = 512px
+        int boardHeight = tileSize * rows; //32*16 = 512px
 
         JFrame frame = new JFrame("Space Invaders in Java");
-        frame.setVisible(true);
-        frame.setSize(boardWidth, boatdHeight);
+        //frame.setVisible(true);
+        frame.setSize(boardWidth, boardHeight);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        SpaceInvaders spaceInvaders = new SpaceInvaders();
+        frame.add(spaceInvaders);
+        frame.pack();
+        frame.setVisible(true);
     }
 }
