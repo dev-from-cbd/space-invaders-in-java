@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.*;
 
-public class SpaceInvaders extends JPanel implements ActionListener {
+public class SpaceInvaders extends JPanel implements ActionListener, KeyListener {
     class Block {
         int x;
         int y;
@@ -41,7 +41,7 @@ public class SpaceInvaders extends JPanel implements ActionListener {
     int shipHeight = tileSize; //32px
     int shipX = tileSize*columns/2 - tileSize;
     int shipY = boardHeight - tileSize*2;
-
+    int shipVelocityX = tileSize; //ship moving speed
     Block ship;
 
     Timer gameLoop;
@@ -81,4 +81,50 @@ public class SpaceInvaders extends JPanel implements ActionListener {
 
         //Aliens
     }
+
+/* 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        move();
+        repaint();
+        if (gameOver) {
+            gameLoop.stop();
+        }
+    }*/
+
+    @Override
+    public void keyPressed(KeyEvent e) {}
+
+    @Override
+    public void keyTyped(KeyEvent e) {}
+
+/*     @Override
+    public void keyReleased(KeyEvent e) {}    }*/
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        if (gameOver) { //any key to restart
+            ship.x = shipX;
+            /* bulletArray.clear();
+            alienArray.clear();
+            gameOver = false;
+            score = 0;
+            alienColumns = 3;
+            alienRows = 2;
+            alienVelocityX = 1;
+            createAliens();
+            gameLoop.start(); */
+        }
+        else if (e.getKeyCode() == KeyEvent.VK_LEFT  && ship.x - shipVelocityX >= 0) {
+            ship.x -= shipVelocityX; //move left one tile
+        }
+        else if (e.getKeyCode() == KeyEvent.VK_RIGHT  && ship.x + shipVelocityX + ship.width <= boardWidth) {
+            ship.x += shipVelocityX; //move right one tile
+        }
+        else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+            //shoot bullet
+            Block bullet = new Block(ship.x + shipWidth*15/32, ship.y, bulletWidth, bulletHeight, null);
+            bulletArray.add(bullet);
+        }
+
 }
