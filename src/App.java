@@ -6,11 +6,11 @@ public class App {
         int tileSize = 32;
         int rows = 16;
         int columns = 16;
-        int boardWidth = tileSize * columns; //32*16 = 512px
-        int boardHeight = tileSize * rows; //32*16 = 512px
+        int boardWidth = tileSize * columns; // 32 * 16 = 512px
+        int boardHeight = tileSize * rows; // 32 * 16 = 512px
 
-        JFrame frame = new JFrame("Space Invaders in Java");
-        //frame.setVisible(true);
+        JFrame frame = new JFrame("Space Invaders");
+        // frame.setVisible(true);
         frame.setSize(boardWidth, boardHeight);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
@@ -19,6 +19,8 @@ public class App {
         SpaceInvaders spaceInvaders = new SpaceInvaders();
         frame.add(spaceInvaders);
         frame.pack();
+        spaceInvaders.requestFocus();
         frame.setVisible(true);
+
     }
 }
